@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { appRoutes } from "@/router/routes";
-
-import { CardComponent } from "@/common/components/card.component";
 import { CharacterVm } from "../character-detail.vm";
+import { CharacterCardComponent } from "./character-card.component";
 
 interface Props {
   character: CharacterVm;
@@ -26,10 +24,10 @@ export const CharacterDetailComponent: React.FC<Props> = (props) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "70vh",
         }}
       >
-        <CardComponent imageUrl={character.image} title={character.name} />      
+        <CharacterCardComponent image={character.image} name={character.name} />      
       </div>
     </>
   );

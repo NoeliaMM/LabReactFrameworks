@@ -3,46 +3,32 @@ import { MemberListComponent } from "./components/member-list.component";
 import { getMembers } from "./api";
 import { mapMemberListFromApiToVm } from "./member-list.mapper";
 import { MemberVm } from "./member-list.vm";
+import { PageContext } from "@/core/providers";
 
-interface Props {
-  searchTerm: string;
-  page: number;
-  setPage: (page: number) => void;
-  rowsPerPage: number;
-  setRowsPerPage: (rows: number) => void;
-}
+// interface Props {
+//   searchTerm: string;
+// }
 
-export const MemberListContainer: React.FC<Props> = ({
-  searchTerm,
-  page,
-  setPage,
-  rowsPerPage,
-  setRowsPerPage,
-}) => {
+export const MemberListContainer: React.FC = () => {
 
+ const {
+    searchTerm,
+    // setSearchTerm,  
+  } = React.useContext(PageContext); 
 
   const membersMemo = React.useMemo(() => {
     const fetchMember = async () => {
       const json = await getMembers(searchTerm);
       return mapMemberListFromApiToVm(json);
     };
-    return fetchMember(); 
+    return fetchMember();
   }, [searchTerm]);
 
   const [members, setMembers] = React.useState<MemberVm[]>([]);
 
   React.useEffect(() => {
-    // Si `members` cambia, resuelve la promesa y la almacena en el state
     membersMemo.then((result) => setMembers(result));
   }, [membersMemo]);
 
-  return (
-    <MemberListComponent
-      members={members}
-      page={page}
-      setPage={setPage}
-      rowsPerPage={rowsPerPage}
-      setRowsPerPage={setRowsPerPage}
-    />
-  );
+  return <MemberListComponent members={members} />;
 };

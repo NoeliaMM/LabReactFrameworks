@@ -11,8 +11,8 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
+import { PageContext } from "@/core/providers";
 
-// Estilo de las celdas
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -23,36 +23,31 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-
 interface Props<T> {
   data: T[];
-  columns: { label: string; key: keyof T }[]; 
-  page: number;
-  total?:number;
-  setPage: (page: number) => void;
+  columns: { label: string; key: keyof T }[];
+
+  total?: number;
   rowsPerPage: number;
-  setRowsPerPage: (rows: number) => void;
-  renderRow: (item: T) => React.ReactNode; 
+  renderRow: (item: T) => React.ReactNode;
   rowsPerPageOptions?: number[];
 }
 
 export const TableComponent = <T,>({
   data,
   columns,
-  page,
   total,
-  setPage,
-  rowsPerPage,
-  setRowsPerPage,
   renderRow,
-  rowsPerPageOptions
+  rowsPerPage,
+  rowsPerPageOptions,
 }: Props<T>) => {
+  const { page, setPage, setRowsPerPage } = React.useContext(PageContext);
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
-    console.log('handle',event);    
+    console.log("handle", event);
     setPage(newPage);
   };
 
@@ -77,18 +72,19 @@ export const TableComponent = <T,>({
             </TableRow>
           </TableHead>
           <TableBody>
-  {(total ? data : data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)) 
-    .map((item, index) => (
-      <TableRow key={index}>{renderRow(item)}</TableRow>
-    ))
-  }
-</TableBody>
+            {(total
+              ? data
+              : data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            ).map((item, index) => (
+              <TableRow key={index}>{renderRow(item)}</TableRow>
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={rowsPerPageOptions ?? [5, 10, 25, 100]}
+        rowsPerPageOptions={rowsPerPageOptions ?? [5, 10, 25]}
         component="div"
-        count={total??data.length}
+        count={total ?? data.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={(event, newPage) => handleChangePage(event, newPage)}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MemberVm } from "../member-detail.vm";
 import { appRoutes } from "@/router/routes";
-import { SearchContext } from "@/core/providers";
+import { PageContext } from "@/core/providers";
 import { CardComponent } from "@/common/components/card.component";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 export const MemberDetailComponent: React.FC<Props> = (props) => {
   const { member } = props;
-  const { searchTerm } = React.useContext(SearchContext);
+  const { searchTerm } = React.useContext(PageContext);
 
   if (!member.avatarUrl) {
     return <div>Cargando...</div>;

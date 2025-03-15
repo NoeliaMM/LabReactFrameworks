@@ -1,6 +1,6 @@
 import React from "react";
 
-interface SearchContextState {
+interface PageContextState {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   page: number;
@@ -9,7 +9,7 @@ interface SearchContextState {
   setRowsPerPage: (rows: number) => void;
 }
 
-const defaultState: SearchContextState = {
+const defaultState: PageContextState = {
   searchTerm: "lemoncode", 
   setSearchTerm: () => {},
   page: 0,
@@ -18,7 +18,7 @@ const defaultState: SearchContextState = {
   setRowsPerPage: () => {},
 };
 
-export const SearchContext = React.createContext<SearchContextState>(defaultState);
+export const PageContext = React.createContext<PageContextState>(defaultState);
 
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [searchTerm, setSearchTerm] = React.useState(defaultState.searchTerm);
@@ -26,7 +26,7 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [rowsPerPage, setRowsPerPage] = React.useState(defaultState.rowsPerPage);
 
   return (
-    <SearchContext.Provider
+    <PageContext.Provider
       value={{
         searchTerm,
         setSearchTerm,
@@ -37,6 +37,6 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       }}
     >
       {children}
-    </SearchContext.Provider>
+    </PageContext.Provider>
   );
 };
