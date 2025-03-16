@@ -1,6 +1,6 @@
 import React from "react";
 import { MemberVm } from "../member-list.vm";
-import { TableComponent } from "@/common/components/table.component";
+import { TableComponent } from "@/common/components";
 import { MemberListItemComponent } from "./member-list-item.component";
 import { PageContext } from "@/core/providers";
 

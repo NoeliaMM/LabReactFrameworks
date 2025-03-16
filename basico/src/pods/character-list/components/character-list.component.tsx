@@ -1,5 +1,5 @@
 import React from "react";
-import { TableComponent } from "@/common/components/table.component";
+import { TableComponent } from "@/common/components";
 import { CharacterListItemComponent } from "./character-list-item.component";
 import { CharacterVm } from "../character-list.vm";
 import { PageContext } from "@/core/providers";

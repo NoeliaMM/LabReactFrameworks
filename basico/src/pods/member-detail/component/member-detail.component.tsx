@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MemberVm } from "../member-detail.vm";
 import { appRoutes } from "@/router/routes";
 import { PageContext } from "@/core/providers";
-import { CardComponent } from "@/common/components/card.component";
+import { MemberCardComponent } from "@/pods/member-detail/component/member-card.component";
 
 interface Props {
   member: MemberVm;
@@ -28,7 +28,7 @@ export const MemberDetailComponent: React.FC<Props> = (props) => {
           height: "100vh",
         }}
       >
-        <CardComponent member ={member} />      
+        <MemberCardComponent member ={member} />      
       </div>
     </>
   );

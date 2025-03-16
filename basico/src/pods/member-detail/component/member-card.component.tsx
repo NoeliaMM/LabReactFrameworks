@@ -6,7 +6,7 @@ interface Props {
 member:MemberVm
 }
 
-export const CardComponent: React.FC<Props> = ({ member }) => {  
+export const MemberCardComponent: React.FC<Props> = ({ member }) => {  
   return (
     <Card sx={{ width: 345, minWidth: 250 }}>
       <CardMedia
