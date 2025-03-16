@@ -16,7 +16,7 @@ export const AppLayout: React.FC<PropsWithChildren> = (props) => {
     title = "Buscador miembros organización";
 
   } else if (location.pathname === appRoutes.characterList) {
-    title = "Listado characters Rick & Morty";
+    title = "Listado personajes Rick & Morty";
   } else if (isDetail) {
     title = "Detalle";
 

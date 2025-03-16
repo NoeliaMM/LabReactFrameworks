@@ -7,7 +7,6 @@ import { PageContext } from "@/core/providers";
 export const MemberListContainer: React.FC = () => {
 
   const {searchTerm, data,setData} = React.useContext(PageContext);
-
   const currentSearchTerm = React.useRef<string>(searchTerm);
   
   React.useEffect(() => {

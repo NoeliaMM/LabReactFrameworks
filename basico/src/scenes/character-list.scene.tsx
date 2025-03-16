@@ -4,6 +4,7 @@ import { CharacterListContainer } from "@/pods/character-list/character-list.con
 export const CharacterListScene: React.FC = () => {
   return (
     <>
+    
       <CharacterListContainer />
     </>
   );

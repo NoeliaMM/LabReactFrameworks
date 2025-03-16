@@ -1,8 +1,7 @@
 import { MemberApi } from "./member-list.api.vm";
 
 export const getMembers = async (org: string): Promise<MemberApi[]> => {
-  console.log('getMember');
-  try {
+   try {
     const response = await fetch(`https://api.github.com/orgs/${org}/members`);
     
     if (!response.ok) {    

@@ -11,8 +11,7 @@ export const SearchListScene: React.FC = () => {
     setSearchTerm,  
   } = React.useContext(PageContext);  
 
-  const handleSubmit = (newSearchTerm: string) => {
-    console.log('newSearchTerm', newSearchTerm);
+  const handleSubmit = (newSearchTerm: string) => {  
     setSearchTerm(newSearchTerm);
   };
   

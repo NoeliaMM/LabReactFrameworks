@@ -18,15 +18,14 @@ export const CharacterListItemComponent: React.FC<Props> = (props) => {
       <TableCell>     
         <Avatar alt={character.name} src={character.image}  sx={{ width: 56, height: 56 }}/>
       </TableCell>
+      <TableCell>  
+          {character.id}       
+      </TableCell>
       <TableCell>
-        <Link
-           to={generatePath(appRoutes.characterDetail, { id: character.id })}
-        
-        >
-          {character.id}
+        <Link to={generatePath(appRoutes.characterDetail, { id: character.id })} >
+          {character.name}
         </Link>
       </TableCell>
-      <TableCell>{character.name}</TableCell>
       <TableCell>{character.species}</TableCell>
     </>
   );
