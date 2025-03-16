@@ -55,7 +55,7 @@ export const TableComponent = <T,>({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setRowsPerPage(+event.target.value);
-    setPage(0);
+    setPage(total ? 0 : page);
   };
 
   return (
@@ -72,12 +72,23 @@ export const TableComponent = <T,>({
             </TableRow>
           </TableHead>
           <TableBody>
-            {(total
-              ? data
-              : data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            ).map((item, index) => (
-              <TableRow key={index}>{renderRow(item)}</TableRow>
-            ))}
+            {data && data.length > 0 ? (
+              (total
+                ? data
+                : data.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+              )?.map((item, index) => (
+                <TableRow key={index}>{renderRow(item)}</TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} align="center">
+                  No se han encontrado resultados
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>

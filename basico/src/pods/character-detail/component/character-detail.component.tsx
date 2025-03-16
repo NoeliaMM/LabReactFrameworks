@@ -10,12 +10,7 @@ interface Props {
 
 export const CharacterDetailComponent: React.FC<Props> = (props) => {
   const { character } = props;
-
-
-  if (!character.image) {
-    return <div>Cargando...</div>;
-  }
-
+  
   return (
     <>
       <Link to={appRoutes.characterList}>Volver al Listado de Rick & Mortis</Link>
@@ -27,7 +22,7 @@ export const CharacterDetailComponent: React.FC<Props> = (props) => {
           height: "70vh",
         }}
       >
-        <CharacterCardComponent image={character.image} name={character.name} />      
+        <CharacterCardComponent characterInfo={character} />      
       </div>
     </>
   );

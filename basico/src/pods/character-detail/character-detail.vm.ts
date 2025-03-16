@@ -1,20 +1,23 @@
 export interface CharacterVm {
-  id: string
-  name: string
-  status: string
-  species: string
-  type: string
-  gender: string
-image:string
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  origin: string;
+  location: string;
+  type: string;
+  gender: string;
+  image: string;
 }
 
-export const createEmptyCharacter = ():CharacterVm=>({
-  id: '',
-  name: '',
-  status: '',
-  species: '',
-  type: '',
-  gender: '',
-  image:''
-  
+export const createEmptyCharacter = (): CharacterVm => ({
+  id: "",
+  name: "",
+  status: "",
+  species: "",
+  origin: "",
+  location: "",
+  type: "",
+  gender: "",
+  image: "",
 });

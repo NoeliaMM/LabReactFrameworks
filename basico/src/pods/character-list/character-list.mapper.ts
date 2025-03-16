@@ -12,5 +12,5 @@ export const mapItemFromApiToVm = (
   id: character.id,
   name: character.name,
   image: character.image,
-  type: character.type
+  species: character.species
 });

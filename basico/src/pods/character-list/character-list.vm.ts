@@ -1,6 +1,6 @@
 export interface CharacterVm {
   id: number;
   name: string;
-  type: string;
+  species: string;
   image: string;
 }

@@ -6,27 +6,28 @@ import { PageContext } from "@/core/providers";
 
 interface Props {
   characters: CharacterVm[];
+  total: number;
 }
 
-export const CharacterListComponent: React.FC<Props> = ({ characters }) => {
+export const CharacterListComponent: React.FC<Props> = ({ characters,total }) => {
   const { page } = React.useContext(PageContext);
-  return (
+  return (    
     <TableComponent<CharacterVm>
       key={page}
       data={characters}
+      total={total}
       rowsPerPageOptions={[]}
       columns={[
         { label: "Avatar", key: "image" },
         { label: "Id", key: "id" },
         { label: "Nombre", key: "name" },
-        { label: "Tipo", key: "type" },
+        { label: "Especie", key: "species" },
       ]}
-      rowsPerPage={10}
+      rowsPerPage={20}
       renderRow={(character) => (
         <CharacterListItemComponent
           key={character.id}
-          character={character}
-          page={page - 1}
+          character={character}         
         />
       )}
     />

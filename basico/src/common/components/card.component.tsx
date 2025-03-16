@@ -22,6 +22,7 @@ export const CardComponent: React.FC<Props> = ({ imageUrl, title, description })
         }}
         title={title}
       />
+      {/* TODO: METER BIO Y COMPANY */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title}

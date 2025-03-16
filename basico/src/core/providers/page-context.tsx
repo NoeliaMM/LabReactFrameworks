@@ -1,6 +1,6 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
-interface PageContextState {
+interface PageContextModel {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   page: number;
@@ -9,12 +9,10 @@ interface PageContextState {
   setRowsPerPage: (rows: number) => void;
   data: any[];
   setData: (data: any[]) => void;
-  hasFetchedData: boolean,
-  setHasFetchedData: (fetched: boolean) => void,
 }
 
-const defaultState: PageContextState = {
-  searchTerm: "lemoncode", 
+const defaultState: PageContextModel = {
+  searchTerm: "lemoncode",
   setSearchTerm: () => {},
   page: 0,
   setPage: () => {},
@@ -22,18 +20,17 @@ const defaultState: PageContextState = {
   setRowsPerPage: () => {},
   data: [],
   setData: () => {},
-  hasFetchedData: false,
-  setHasFetchedData: () => {},
 };
 
-export const PageContext = React.createContext<PageContextState>(defaultState);
+export const PageContext = React.createContext<PageContextModel>(defaultState);
 
-export const PageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PageProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [searchTerm, setSearchTerm] = React.useState(defaultState.searchTerm);
   const [data, setData] = React.useState(defaultState.data);
   const [page, setPage] = React.useState(defaultState.page);
-  const [hasFetchedData, setHasFetchedData] = React.useState(defaultState.hasFetchedData);
-  const [rowsPerPage, setRowsPerPage] = React.useState(defaultState.rowsPerPage);
+  const [rowsPerPage, setRowsPerPage] = React.useState(
+    defaultState.rowsPerPage
+  );
 
   return (
     <PageContext.Provider
@@ -46,8 +43,6 @@ export const PageProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setPage,
         rowsPerPage,
         setRowsPerPage,
-        hasFetchedData,
-        setHasFetchedData,
       }}
     >
       {children}

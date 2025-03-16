@@ -7,11 +7,11 @@ import { CharacterVm } from "../character-list.vm";
 
 interface Props {
   character: CharacterVm;
-  page: number;
+  
 }
 
 export const CharacterListItemComponent: React.FC<Props> = (props) => {
-  const { character, page } = props;
+  const { character } = props;
 
   return (
     <>
@@ -21,13 +21,13 @@ export const CharacterListItemComponent: React.FC<Props> = (props) => {
       <TableCell>
         <Link
            to={generatePath(appRoutes.characterDetail, { id: character.id })}
-          state={{ currentPage: page }} 
+        
         >
           {character.id}
         </Link>
       </TableCell>
       <TableCell>{character.name}</TableCell>
-      <TableCell>{character.type}</TableCell>
+      <TableCell>{character.species}</TableCell>
     </>
   );
 };

@@ -3,9 +3,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 export const CharacterDetailScene: React.FC = () => {
-    const { id } = useParams<string>();
-    const memberId = id ?? '';
-    
+  const { id } = useParams<string>();
+  const memberId = id ?? "";
+
   return (
     <>
       <CharacterDetailContainer id={memberId} />
