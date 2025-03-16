@@ -4,7 +4,7 @@ import { appRoutes} from "./routes";
 import { SearchListScene } from "@/scenes/search-list.scene";
 import { MemberDetailScene } from "@/scenes/member-detail.scene";
 import { AppLayout } from "@/layout/app/app-layout.component";
-import { SearchProvider } from "@/core/providers";
+import { PageProvider } from "@/core/providers";
 import { HomeScene } from "@/scenes/home.scene";
 import { CharacterListScene } from "@/scenes/character-list.scene";
 import { CharacterDetailScene } from "@/scenes/character-detail.scene";
@@ -13,7 +13,7 @@ import { CharacterDetailScene } from "@/scenes/character-detail.scene";
 export const AppRouter :React.FC = () => {
     return (
     <Router>      
-      <SearchProvider>
+      <PageProvider>
         <AppLayout>
           <Routes>          
             <Route path={appRoutes.home} element={<HomeScene />} />
@@ -23,7 +23,7 @@ export const AppRouter :React.FC = () => {
             <Route path={appRoutes.characterDetail} element={<CharacterDetailScene />} />
           </Routes>
         </AppLayout>
-      </SearchProvider>
+      </PageProvider>
     </Router>
     );
 };

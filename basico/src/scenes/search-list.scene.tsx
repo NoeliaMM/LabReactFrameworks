@@ -12,13 +12,14 @@ export const SearchListScene: React.FC = () => {
   } = React.useContext(PageContext);  
 
   const handleSubmit = (newSearchTerm: string) => {
+    console.log('newSearchTerm', newSearchTerm);
     setSearchTerm(newSearchTerm);
   };
   
   return (
-    <>
+    <>    
       <SearchContainer onSubmit={handleSubmit} searchTerm={searchTerm} /> 
-      <MemberListContainer  />
+      <MemberListContainer  searchTerm={searchTerm} />
     </>
   );
 };

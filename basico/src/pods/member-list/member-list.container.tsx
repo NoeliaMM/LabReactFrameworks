@@ -3,32 +3,30 @@ import { MemberListComponent } from "./components/member-list.component";
 import { getMembers } from "./api";
 import { mapMemberListFromApiToVm } from "./member-list.mapper";
 import { MemberVm } from "./member-list.vm";
-import { PageContext } from "@/core/providers";
 
-// interface Props {
-//   searchTerm: string;
-// }
 
-export const MemberListContainer: React.FC = () => {
+interface Props {
+  searchTerm: string;
+}
 
- const {
-    searchTerm,
-    // setSearchTerm,  
-  } = React.useContext(PageContext); 
+export const MemberListContainer: React.FC<Props> = ({searchTerm}) => {
 
-  const membersMemo = React.useMemo(() => {
-    const fetchMember = async () => {
-      const json = await getMembers(searchTerm);
-      return mapMemberListFromApiToVm(json);
-    };
-    return fetchMember();
+ 
+  const [members, setMembers] = React.useState<MemberVm[]>([]);
+  const currentSearchTerm = React.useRef<string>("");
+  React.useEffect(() => {
+    if(currentSearchTerm.current !== searchTerm) {
+      getMembers(searchTerm).then((json) => 
+        setMembers(mapMemberListFromApiToVm(json)));
+      currentSearchTerm.current = searchTerm;
+
+    }
   }, [searchTerm]);
 
-  const [members, setMembers] = React.useState<MemberVm[]>([]);
 
-  React.useEffect(() => {
-    membersMemo.then((result) => setMembers(result));
-  }, [membersMemo]);
+  // React.useEffect(() => {
+  //   membersMemo.then((result) => setMembers(result));
+  // }, [membersMemo]);
 
   return <MemberListComponent members={members} />;
 };

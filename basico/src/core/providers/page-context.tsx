@@ -20,7 +20,7 @@ const defaultState: PageContextState = {
 
 export const PageContext = React.createContext<PageContextState>(defaultState);
 
-export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [searchTerm, setSearchTerm] = React.useState(defaultState.searchTerm);
   const [page, setPage] = React.useState(defaultState.page);
   const [rowsPerPage, setRowsPerPage] = React.useState(defaultState.rowsPerPage);

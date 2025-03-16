@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const HomeScene: React.FC = () => {
   return (
+    
     <>
       <li>
         <Link to={appRoutes.searchList}>
