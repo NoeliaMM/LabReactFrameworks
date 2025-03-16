@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const MemberListComponent: React.FC<Props> = ({ members }) => {
-  const { page, rowsPerPage } = React.useContext(PageContext);
+  const { rowsPerPage } = React.useContext(PageContext);
 
   return (
     <TableComponent<MemberVm>
@@ -21,7 +21,7 @@ export const MemberListComponent: React.FC<Props> = ({ members }) => {
       ]}
       rowsPerPage={rowsPerPage}
       renderRow={(member) => (
-        <MemberListItemComponent key={member.id} member={member} page={page} />
+        <MemberListItemComponent key={member.id} member={member} />
       )}
     />
   );

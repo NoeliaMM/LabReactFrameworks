@@ -7,34 +7,21 @@ import {TableCell} from "@mui/material";
 
 interface Props {
   member: MemberVm;
-  page: number;
+  // page: number;
 }
 
 export const MemberListItemComponent: React.FC<Props> = (props) => {
-  const { member, page } = props;
+  const { member } = props;
 
   return (
     <>
-      {/* <StyledTableRow key={member.id}>   
-                <StyledTableCell align="left"><img src={member.avatarUrl}  style={{ width: 50, height: 50, borderRadius: "50%" }} /></StyledTableCell>
-                <StyledTableCell align="left">
-                  <Link
-                    to={generatePath(appRoutes.memberDetail, { id: member.id })}
-                    state={{ currentPage: page }} 
-                  >
-                    {member.id}
-                  </Link>
-                   </StyledTableCell>
-                <StyledTableCell align="left">{member.login}</StyledTableCell>
-            </StyledTableRow> */}
-
       <TableCell>
         <img src={member.avatarUrl} alt={member.login} width={50} height={50} />
       </TableCell>
       <TableCell>
         <Link
           to={generatePath(appRoutes.memberDetail, { id: member.id })}
-          state={{ currentPage: page }} 
+          // state={{ currentPage: page }} 
         >
           {member.id}
         </Link>

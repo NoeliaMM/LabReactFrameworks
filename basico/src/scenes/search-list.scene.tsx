@@ -19,7 +19,7 @@ export const SearchListScene: React.FC = () => {
   return (
     <>    
       <SearchContainer onSubmit={handleSubmit} searchTerm={searchTerm} /> 
-      <MemberListContainer  searchTerm={searchTerm} />
+      <MemberListContainer  />
     </>
   );
 };
