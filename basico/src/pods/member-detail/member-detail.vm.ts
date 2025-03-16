@@ -3,6 +3,8 @@ export interface MemberVm {
   login:string;
   blog:string;
   avatarUrl:string;
+  bio:string;
+  company:string;
 }
 
 export const createEmptyMember = ():MemberVm=>({
@@ -10,4 +12,6 @@ export const createEmptyMember = ():MemberVm=>({
   login:"",
   blog:"",
   avatarUrl:"",
+  bio:"",
+  company:""
 });

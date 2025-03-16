@@ -14,15 +14,6 @@ export const CharacterListContainer: React.FC = () => {
   const debouncedName = useDebounce(inputs.name, 500);
   const debouncedSpecie = useDebounce(inputs.specie, 500);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setInputs((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    setPage(0); 
-  };
-
   React.useEffect(() => {
     const fetchCharacters = async () => {     
       if (
@@ -39,6 +30,16 @@ export const CharacterListContainer: React.FC = () => {
 
     fetchCharacters();
   }, [page, debouncedName, debouncedSpecie, setData]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputs((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    setPage(0); 
+  };
+
 
   return (
     <>

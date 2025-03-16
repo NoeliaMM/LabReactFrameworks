@@ -3,4 +3,6 @@ export interface MemberApi {
   login:string;
   blog:string;
   avatar_url:string;
+  bio:string;
+  company:string;
 }

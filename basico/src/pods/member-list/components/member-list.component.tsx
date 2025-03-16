@@ -12,13 +12,6 @@ export const MemberListComponent: React.FC<Props> = ({ members }) => {
   const { rowsPerPage } = React.useContext(PageContext);
 
   return (
-    <>
-      {members.length === 0 ? (
-        <h2>
-          No se han encontrado resultados para esta organización. Realice otra
-          búsqueda.
-        </h2>
-      ) : (
         <TableComponent<MemberVm>
           data={members}
           columns={[
@@ -30,8 +23,6 @@ export const MemberListComponent: React.FC<Props> = ({ members }) => {
           renderRow={(member) => (
             <MemberListItemComponent key={member.id} member={member} />
           )}
-        />
-      )}
-    </>
+        /> 
   );
 };

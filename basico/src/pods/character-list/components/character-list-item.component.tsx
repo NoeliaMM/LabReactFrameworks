@@ -7,11 +7,11 @@ import { CharacterVm } from "../character-list.vm";
 
 interface Props {
   character: CharacterVm;
-  
+  currentPage: number,   
 }
 
 export const CharacterListItemComponent: React.FC<Props> = (props) => {
-  const { character } = props;
+  const { character,currentPage } = props;
 
   return (
     <>
@@ -22,7 +22,10 @@ export const CharacterListItemComponent: React.FC<Props> = (props) => {
           {character.id}       
       </TableCell>
       <TableCell>
-        <Link to={generatePath(appRoutes.characterDetail, { id: character.id })} >
+      <Link
+          to={generatePath(appRoutes.characterDetail, { id: character.id })}
+          state={{ currentPage }} // Pasa el estado de la página actual al detalle
+        >
           {character.name}
         </Link>
       </TableCell>

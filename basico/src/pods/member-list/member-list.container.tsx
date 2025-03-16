@@ -9,7 +9,7 @@ export const MemberListContainer: React.FC = () => {
   const {searchTerm, data,setData} = React.useContext(PageContext);
   const currentSearchTerm = React.useRef<string>(searchTerm);
   
-  React.useEffect(() => {
+  React.useEffect(() => {  
     if(data.length===0 || currentSearchTerm.current !== searchTerm) {
       getMembers(searchTerm).then((json) =>       
         setData(mapMemberListFromApiToVm(json)));      

@@ -28,7 +28,7 @@ export const MemberDetailComponent: React.FC<Props> = (props) => {
           height: "100vh",
         }}
       >
-        <CardComponent imageUrl={member.avatarUrl} title={member.login} />      
+        <CardComponent member ={member} />      
       </div>
     </>
   );

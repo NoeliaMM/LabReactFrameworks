@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { appRoutes } from "@/router/routes";
 import { CharacterVm } from "../character-detail.vm";
 import { CharacterCardComponent } from "./character-card.component";

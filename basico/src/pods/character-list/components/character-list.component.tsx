@@ -27,7 +27,8 @@ export const CharacterListComponent: React.FC<Props> = ({ characters,total }) =>
       renderRow={(character) => (
         <CharacterListItemComponent
           key={character.id}
-          character={character}         
+          character={character}
+          currentPage={page}
         />
       )}
     />

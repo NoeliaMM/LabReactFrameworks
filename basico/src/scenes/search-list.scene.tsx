@@ -6,7 +6,7 @@ import { PageContext } from "@/core/providers";
 
 export const SearchListScene: React.FC = () => {
 
-  const {
+  const {    
     searchTerm,
     setSearchTerm,  
   } = React.useContext(PageContext);  
@@ -14,6 +14,7 @@ export const SearchListScene: React.FC = () => {
   const handleSubmit = (newSearchTerm: string) => {  
     setSearchTerm(newSearchTerm);
   };
+
   
   return (
     <>    
@@ -22,5 +23,4 @@ export const SearchListScene: React.FC = () => {
     </>
   );
 };
-
   
