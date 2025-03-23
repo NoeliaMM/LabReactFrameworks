@@ -1,118 +1,84 @@
-# 04 Details
+# Laboratorio React - Banca Online
 
-## Summary
+## Objetivo
 
-This example takes the _03-list_ example as a starting point.
+El objetivo de este laboratorio es crear una aplicación web utilizando React aplicando todos los conocimientos obtenidos en el bootcamp.
 
-We are going to show the detail of a Github user: for them
-we keep the id of the user we chose in the list,
-call the Github API to get its details, and display them in a component.
-display them in a component.
+## Instalación
 
-## Step by Step Guide
-
-- First we copy the previous example, and do an _npm install_.
+Para instalar el proyecto, ejecutar el siguiente comando:
 
 ```bash
 npm install
 ```
 
-- If we want to see what kind of data we are going to handle, we can open the web browser and see what Github's Rest API returns.
+Con este comando se instalarán tanto las dependencias de la aplicación como las del servidor.
+
+## Ejecución
+
+Para ejecutar el proyecto, ejecutar el siguiente comando:
 
 ```bash
-https://api.github.com/users/brauliodiez
+npm run dev
 ```
 
-EXCERCISE OPTION
-> With what you have done in the previous examples you would be able to set up
-> this page by yourself, I advise you to pause this > exercise and try it out.
-> exercise and try it out.
+También se puede hacer desde la raíz de la aplicación, arrancar la aplicación por separado:
 
-- We are going to create an interface to have typed to show the details of a member.
-
-_./src/detail.tsx_
-
-```diff
-import React from "react";
-import { Link } from "react-router-dom";
-
-+ interface MemberDetailEntity {
-+   id : string;
-+   login: string;
-+   name: string;
-+   company: string;
-+   bio: string;
-+ }
-+
-+ const createDefaultMemberDetail = () => ({
-+   id: '',
-+   login: '',
-+   name: '',
-+   company: '',
-+   bio: '',
-+ })
-+
-export const DetailPage: React.FC = () => {
-+  const [member, setMember] = React.useState<MemberDetailEntity>(createDefaultMemberDetail());
-  const { id } = useParams();
-
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
-      <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
+```bash
+npm run dev
 ```
 
-- Let's do the data loading:
+Y el servidor, vamos a la carpeta server:
 
-_./src/detail.tsx_
-
-```diff
-export const DetailPage: React.FC = () => {
-  const [member, setMember] = React.useState<MemberDetailEntity>();
-  const { id } = useParams();
-
-+  React.useEffect(() => {
-+    fetch(`https://api.github.com/users/${id}`)
-+      .then((response) => response.json())
-+      .then((json) => setMember(json));
-+  }, []);
-
-
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
-      <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
+```bash
+cd server
 ```
 
-- Let's show the data:
+Y ejecutamos el siguiente comando:
 
-_./src/detail.tsx_
-
-```diff
-export const DetailPage: React.FC = () => {
-  const [member, setMember] = React.useState<MemberDetailEntity>();
-  const { id } = useParams();
-
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
--      <h3>User Id: {id}</h3>
-+      <p> id: {member.id}</p>
-+      <p> login: {member.login}</p>
-+      <p> name: {member.name}</p>
-+      <p> company: {member.company}</p>
-+      <p> bio: {member.bio}</p>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
+```bash
+npm start
 ```
 
+## Acceso
+
+Para poder logarse en la aplicación, se debe utilizar el siguiente usuario y contraseña:
+
+```bash
+Usuario: admin@email.com
+Contraseña: test
+```
+
+## Descripción
+
+La aplicación consiste en una banca online, donde el usuario puede ver sus cuentas, ver los movimientos de una cuenta y hacer transferencias.
+
+Vamos a tener las siguientes pantallas:
+
+- Login
+- Mis cuentas
+- Creación y edición de cuentas
+- Movimientos de una cuenta
+- Transferencias tanto desde un enlace cómo a partir de movimientos hacer una transferencia desde una cuenta determinada.
+
+## Requisitos
+
+- La aplicación debe está desarrollada con React.
+- El backend está montado sobre JSON Server.
+- La aplicación es responsive.
+- La aplicación tiene un menú superior con las siguientes opciones:
+  - Mis cuentas
+  - Transferencias
+  - Movimientos, solo se quiere ver los movimientos de una cuenta.
+
+## Servidor
+
+El servidor está montado sobre JSON Server, y tiene los siguientes endpoints:
+
+- La URL base es: http://localhost:3000/api, se puede cambiar el puerto en el fichero package.json.
+- Para obtener el listado de cuentas: GET /account-list
+- Para obtener una cuenta: GET /account-list/:id
+- Para crear una cuenta: POST /account-list
+- Para editar una cuenta: PATCH /account-list/:id, por el tema que cuando se crea una cuenta en backend se asignan unos campos específicos, que se pueden ver en el fichero account.middleware.js.
+- Para obtener los movimientos de una cuenta: GET /movements/:id
+- Para hacer una transferencia: POST /transfer.

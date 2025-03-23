@@ -1,2 +1,2 @@
-export { routes } from "./routes";
-export * from "./app.router";
+export * from './routes';
+export * from './router.component';

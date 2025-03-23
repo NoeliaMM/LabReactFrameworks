@@ -1,0 +1,28 @@
+/* .main-content{
+    flex-grow: 1;
+} */
+
+.content {
+    display: grid;
+    flex: 1;
+    grid-template-columns: 1fr 300px; /* Galería grande, carrito pequeño */
+    transition: grid-template-columns 0.3s ease;
+  }
+  
+  /* Si el carrito está oculto, la galería ocupa todo el ancho */
+  .full-width {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Galería */
+  .gallery {
+    padding: 1rem;
+    background: white;
+  }
+  
+  /* Carrito */
+  .cart { 
+    padding: 1rem;
+    background: #f8f8f8;
+    border-left: 1px solid #ddd;
+  }

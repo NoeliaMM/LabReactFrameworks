@@ -1,12 +1,16 @@
 import React from "react";
-import { AppRouter } from "@/router";
-import { AuthProvider } from "@/core/providers";
-import { LoginScene } from "./scenes";
 
-export const App = () => {
+
+import "./style.css";
+import { AppRouter } from "@/router";
+import { CartProvider } from "./core/provider";
+
+
+export const App: React.FC = () => {
+
   return (
-    // <AuthProvider Login={<LoginScene />}>
-      <AppRouter />
-    // </AuthProvider>
-  );
+    <CartProvider>
+      <AppRouter/>
+     </CartProvider>
+    );
 };
