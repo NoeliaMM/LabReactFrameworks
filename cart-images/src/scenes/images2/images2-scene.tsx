@@ -1,21 +1,7 @@
 import React from "react";
 
-import classes from "./images2-scene.module.css";
-
-import { HeaderPageComponent } from "@/common/components";
-
+import { Images2Container } from "@/pods/images/images2-container";
 
 export const Images2Scene: React.FC = () => {
-
-
-  return (
-    <>
-      <div className={classes.root}>
-        <HeaderPageComponent
-          title="Images2"          
-        />
-       Images Images2
-      </div>
-    </>
-  );
+  return <Images2Container />;
 };

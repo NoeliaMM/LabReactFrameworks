@@ -1,4 +1,5 @@
-import { PictureInfo } from "@/scenes";
+
+import { PictureInfo } from "@/pods/images/image.vm";
 import React from "react";
 
 interface CartContextModel {
@@ -6,7 +7,7 @@ interface CartContextModel {
   addItem: (id: string) => void;
   removeItem: (id: string) => void;
   data: PictureInfo[];
-  setData: (data: PictureInfo[]) => void;
+  setData: React.Dispatch<React.SetStateAction<PictureInfo[]>>; 
 }
 
 interface Props {
@@ -25,6 +26,7 @@ export const useCartContext = () => React.useContext(CartContext);
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [selectedItems, setSelectedItems] = React.useState<string[]>([]);
+  const [data, setData] = React.useState<PictureInfo[]>([]);
 
   const addItem = (id: string) => {
     setSelectedItems((selectedItems) =>
@@ -33,14 +35,18 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   };
 
   const removeItem = (id: string) => {
-    console.log(selectedItems)
-    console.log(id)
-    setSelectedItems((selectedItems) =>
+      setSelectedItems((selectedItems) =>
       selectedItems.filter((item) => item !== id)
     );
   };
+   React.useEffect(() => {
+      const updatedData = data.map((item) => ({
+        ...item,
+        selected: selectedItems.includes(item.id),
+      }));
+      setData(updatedData);
+    }, [selectedItems,setData]);
 
-  const [data, setData] = React.useState<PictureInfo[]>([]);
 
   return (
     <CartContext.Provider value={{ selectedItems, addItem, removeItem, data, setData }}>

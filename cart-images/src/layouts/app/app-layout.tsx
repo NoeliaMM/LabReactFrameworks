@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  HeaderComponent,
-  NavbarComponent,
-} from "./components";
+import { HeaderComponent, NavbarComponent } from "./components";
 import classes from "./app-layout.module.css";
 import { CartScene } from "@/scenes/cart/cart-scene";
-
 
 interface Props {
   children: React.ReactNode;
@@ -13,25 +9,22 @@ interface Props {
 
 export const AppLayout: React.FC<Props> = (props) => {
   const { children } = props;
+  const [isCartVisible, setIsCartVisible] = React.useState(true);
 
   return (
     <>
       <HeaderComponent />
-      <NavbarComponent />
-     
-      {/* <main className={classes.mainContent}>{children}</main>       */}
-      <div 
-      className={`${classes.content} ${true ? classes.cart : classes.fullWidth}`}
+      <NavbarComponent  isCartVisible={isCartVisible} 
+        setIsCartVisible={setIsCartVisible} />
+      <div
+        className={`${classes.content} ${
+          isCartVisible ? classes.cart : classes.fullWidth
+        }`}
       >
-        <div className="gallery">
-         {children}
-        </div>
+        <div className="gallery">{children}</div>
 
-        {/* {isCartVisible && ( */}
-        <CartScene />
-         {/* )} */}
+        {isCartVisible && <CartScene />}
       </div>
-     
     </>
   );
 };

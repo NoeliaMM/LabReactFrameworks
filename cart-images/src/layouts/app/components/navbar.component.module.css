@@ -25,3 +25,10 @@ border-bottom: 5px solid var(--primary-color);
 padding-bottom: 5px;
 margin-bottom: -10px;
 }
+
+
+.cart{
+    color:white;
+    display: flex;
+    align-items: center;  
+}
